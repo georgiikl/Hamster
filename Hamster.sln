@@ -1,8 +1,28 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hamster.UseCases", "src\Hamster.UseCases\Hamster.UseCases.csproj", "{F6257A2C-CD53-4CAD-A132-A1B280D82DE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hamster.Controllers", "src\Hamster.Controllers\Hamster.Controllers.csproj", "{E4C4AEC5-90FC-450B-8BB3-67BDB9601226}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hamster.Web", "src\Hamster.Web\Hamster.Web.csproj", "{14AABA50-6EED-4965-AF46-B5464F164D53}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F6257A2C-CD53-4CAD-A132-A1B280D82DE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6257A2C-CD53-4CAD-A132-A1B280D82DE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6257A2C-CD53-4CAD-A132-A1B280D82DE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6257A2C-CD53-4CAD-A132-A1B280D82DE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4C4AEC5-90FC-450B-8BB3-67BDB9601226}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4C4AEC5-90FC-450B-8BB3-67BDB9601226}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4C4AEC5-90FC-450B-8BB3-67BDB9601226}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4C4AEC5-90FC-450B-8BB3-67BDB9601226}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14AABA50-6EED-4965-AF46-B5464F164D53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14AABA50-6EED-4965-AF46-B5464F164D53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14AABA50-6EED-4965-AF46-B5464F164D53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14AABA50-6EED-4965-AF46-B5464F164D53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
