@@ -18,6 +18,8 @@ namespace Hamster.Web
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers().AddControllersAsServices();
+            services.AddSwaggerGenerator();
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
@@ -32,6 +34,7 @@ namespace Hamster.Web
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseSwaggerMiddlewares();
 
             app.UseRouting();
 
