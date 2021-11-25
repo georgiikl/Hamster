@@ -67,7 +67,7 @@ namespace Hamster.Web.Extensions
 
         private static void AddComments(this SwaggerGenOptions options)
         {
-            var controllersAssembly = typeof(FundamentalController).Assembly;
+            var controllersAssembly = typeof(StockController).Assembly;
             var xmlFile = $"{controllersAssembly.GetName().Name}.xml";
             var xmlPath = GetFullFilePath(xmlFile);
             options.IncludeXmlComments(xmlPath);
