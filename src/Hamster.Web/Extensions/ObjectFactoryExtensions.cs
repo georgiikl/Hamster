@@ -1,4 +1,5 @@
 using Autofac;
+using MediatR.Extensions.Autofac.DependencyInjection;
 
 namespace Hamster.Web.Extensions
 {
@@ -12,6 +13,7 @@ namespace Hamster.Web.Extensions
                 typeof(UseCases.DependencyInjection).Assembly
             };
             builder.RegisterAssemblyModules(assembles);
+            builder.RegisterMediatR(typeof(Hamster.UseCases.DependencyInjection).Assembly);
         }
     }
 }

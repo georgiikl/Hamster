@@ -1,5 +1,4 @@
 using Autofac;
-using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,7 +16,6 @@ namespace Hamster.Web
         {
             services.AddControllers().AddControllersAsServices();
             services.AddSwaggerGenerator();
-            services.AddMediatR(o => { }, typeof(Hamster.UseCases.DependencyInjection));
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
