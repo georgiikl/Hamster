@@ -8,7 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hamster.Web", "src\Hamster.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C041915E-D206-4708-A6B4-AB42ADA04BCB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hamster.UseCases.IntegrationTests", "src\Tests\Hamster.UseCases.IntegrationTests\Hamster.UseCases.IntegrationTests.csproj", "{9C66743A-C5FB-436E-9253-3B39C5E80E8D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hamster.Controllers.IntegrationTests", "src\Tests\Hamster.Controllers.IntegrationTests\Hamster.Controllers.IntegrationTests.csproj", "{9C66743A-C5FB-436E-9253-3B39C5E80E8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
