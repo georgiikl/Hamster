@@ -8,7 +8,7 @@ namespace Hamster.UseCases.Stocks.Queries.GetFundamental
     {
         public Task<FundamentalDto> Handle(GetFundamentalQuery request, CancellationToken cancellationToken)
         {
-            return Task.FromResult(new FundamentalDto{Foo = request.Ticker});
+            return Task.FromResult(new FundamentalDto());
         }
     }
 }
