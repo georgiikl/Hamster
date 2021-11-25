@@ -7,55 +7,55 @@
         /// <summary>
         /// Рост выручки, в процентах
         /// </summary>
-        public int RevenueGrowth { get; set; }
+        public int? RevenueGrowth { get; set; }
 
         /// <summary>
         /// Рост операционной прибыли, в процентах
         /// </summary>
-        public int OperatingProfitGrowth { get; set; }
+        public int? OperatingProfitGrowth { get; set; }
 
         /// <summary>
         /// Рост чистой прибыли, в процентах
         /// </summary>
-        public int NetProfitGrowth { get; set; }
+        public int? NetProfitGrowth { get; set; }
 
         // Маржинальность бизнеса
         
         /// <summary>
         /// Валовая маржинальность (валовая прибыль)
         /// </summary>
-        public int GrossMargin { get; set; }
+        public int? GrossMargin { get; set; }
 
         /// <summary>
         /// Операционная маржинальность
         /// </summary>
-        public int OperatingMargin { get; set; }
+        public int? OperatingMargin { get; set; }
 
         /// <summary>
         /// Маржинальность по чистой прибыли (коэффициент прибыльности)
         /// </summary>
-        public int NetProfitMargin { get; set; }
+        public int? NetProfitMargin { get; set; }
 
         /// <summary>
         /// ROE (прибыль на инвестиции)
         /// </summary>
-        public int Roe { get; set; }
+        public int? Roe { get; set; }
 
         // Мультипликаторы
         
         /// <summary>
         /// P/E (коэффициент цена/прибыль)
         /// </summary>
-        public int Pe { get; set; }
+        public int? Pe { get; set; }
 
         /// <summary>
         /// P/S (коэффициент цена/объём продаж)
         /// </summary>
-        public int Ps { get; set; }
+        public int? Ps { get; set; }
 
         /// <summary>
         /// EV/EBITDA
         /// </summary>
-        public int EvEbitda { get; set; }
+        public int? EvEbitda { get; set; }
     }
 }
