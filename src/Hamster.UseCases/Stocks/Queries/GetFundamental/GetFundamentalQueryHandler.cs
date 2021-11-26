@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
@@ -18,30 +20,30 @@ namespace Hamster.UseCases.Stocks.Queries.GetFundamental
     {
         public DateTime FiscalDateEnding { get; set; }
         public string ReportedCurrency { get; set; }
-        public string GrossProfit { get; set; }
-        public string TotalRevenue { get; set; }
-        public string CostOfRevenue { get; set; }
-        public string CostofGoodsAndServicesSold { get; set; }
-        public string OperatingIncome { get; set; }
-        public string SellingGeneralAndAdministrative { get; set; }
-        public string ResearchAndDevelopment { get; set; }
-        public string OperatingExpenses { get; set; }
-        public string InvestmentIncomeNet { get; set; }
-        public string NetInterestIncome { get; set; }
-        public string InterestIncome { get; set; }
-        public string InterestExpense { get; set; }
-        public string NonInterestIncome { get; set; }
-        public string OtherNonOperatingIncome { get; set; }
-        public string Depreciation { get; set; }
-        public string DepreciationAndAmortization { get; set; }
-        public string IncomeBeforeTax { get; set; }
-        public string IncomeTaxExpense { get; set; }
-        public string InterestAndDebtExpense { get; set; }
-        public string NetIncomeFromContinuingOperations { get; set; }
-        public string ComprehensiveIncomeNetOfTax { get; set; }
-        public string Ebit { get; set; }
-        public string Ebitda { get; set; }
-        public string NetIncome { get; set; }      
+        public long? GrossProfit { get; set; }
+        public long? TotalRevenue { get; set; }
+        public long? CostOfRevenue { get; set; }
+        public long? CostofGoodsAndServicesSold { get; set; }
+        public long? OperatingIncome { get; set; }
+        public long? SellingGeneralAndAdministrative { get; set; }
+        public long? ResearchAndDevelopment { get; set; }
+        public long? OperatingExpenses { get; set; }
+        public long? InvestmentIncomeNet { get; set; }
+        public long? NetInterestIncome { get; set; }
+        public long? InterestIncome { get; set; }
+        public long? InterestExpense { get; set; }
+        public long? NonInterestIncome { get; set; }
+        public long? OtherNonOperatingIncome { get; set; }
+        public long? Depreciation { get; set; }
+        public long? DepreciationAndAmortization { get; set; }
+        public long? IncomeBeforeTax { get; set; }
+        public long? IncomeTaxExpense { get; set; }
+        public long? InterestAndDebtExpense { get; set; }
+        public long? NetIncomeFromContinuingOperations { get; set; }
+        public long? ComprehensiveIncomeNetOfTax { get; set; }
+        public long? Ebit { get; set; }
+        public long? Ebitda { get; set; }
+        public long? NetIncome { get; set; }      
     }
     
     public interface IAlphaVantageAdapter
@@ -62,8 +64,29 @@ namespace Hamster.UseCases.Stocks.Queries.GetFundamental
         {
             // Welcome to Alpha Vantage! Your dedicated access key is: VXSJQII4WWM38YE7
             var requestUri = $"https://www.alphavantage.co/query?function=INCOME_STATEMENT&symbol={ticker}&apikey=VXSJQII4WWM38YE7";
-            var result = await HttpClient.GetFromJsonAsync<IncomeStatement>(requestUri, cancellationToken);
+            var options = new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                Converters = { new NullableLongConverter() }
+            };
+            var result = await HttpClient.GetFromJsonAsync<IncomeStatement>(requestUri, options, cancellationToken);
             return result;
+        }
+    }
+
+    public class NullableLongConverter : JsonConverter<long?>
+    {
+        public override long? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        {
+            var s = reader.GetString();
+            if (s is null or "None") return null;
+            return long.TryParse(s, out var x) ? x : null;
+        }
+
+        public override void Write(Utf8JsonWriter writer, long? value, JsonSerializerOptions options)
+        {
+            var s = value?.ToString();
+            writer.WriteStringValue(s);
         }
     }
     

@@ -61,6 +61,10 @@ namespace Hamster.Controllers.IntegrationTests.StockController
             Assert.Collection(dto.AnnualReports, annualReportsInspectors);
             var quarterReportsInspectors = Enumerable.Repeat<Action<IncomeStatementItem>>(ItemInspector, 20).ToArray();
             Assert.Collection(dto.QuarterlyReports, quarterReportsInspectors);
+            
+            Assert.Equal(16933000000, dto.AnnualReports[0].GrossProfit);
+            Assert.Equal(21454000000, dto.AnnualReports[0].TotalRevenue);
+            Assert.Null(dto.AnnualReports[0].InvestmentIncomeNet);
         }
         
         private static IContainer BuildContainer()
