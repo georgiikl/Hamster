@@ -12,12 +12,12 @@
         /// <summary>
         /// Рост операционной прибыли, в процентах
         /// </summary>
-        public int? OperatingProfitGrowth { get; set; }
+        public int? OperatingIncomeGrowth { get; set; }
 
         /// <summary>
         /// Рост чистой прибыли, в процентах
         /// </summary>
-        public int? NetProfitGrowth { get; set; }
+        public int? NetIncomeGrowth { get; set; }
 
         // Маржинальность бизнеса
         

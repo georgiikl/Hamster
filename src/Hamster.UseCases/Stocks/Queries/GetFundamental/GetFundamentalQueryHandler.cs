@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text.Json;
@@ -21,10 +22,20 @@ namespace Hamster.UseCases.Stocks.Queries.GetFundamental
         public DateTime FiscalDateEnding { get; set; }
         public string ReportedCurrency { get; set; }
         public long? GrossProfit { get; set; }
+        
+        /// <summary>
+        /// Выручка
+        /// </summary>
         public long? TotalRevenue { get; set; }
+        
         public long? CostOfRevenue { get; set; }
         public long? CostofGoodsAndServicesSold { get; set; }
+        
+        /// <summary>
+        /// Операционная прибыль
+        /// </summary>
         public long? OperatingIncome { get; set; }
+        
         public long? SellingGeneralAndAdministrative { get; set; }
         public long? ResearchAndDevelopment { get; set; }
         public long? OperatingExpenses { get; set; }
@@ -43,6 +54,10 @@ namespace Hamster.UseCases.Stocks.Queries.GetFundamental
         public long? ComprehensiveIncomeNetOfTax { get; set; }
         public long? Ebit { get; set; }
         public long? Ebitda { get; set; }
+        
+        /// <summary>
+        /// Чистая прибыль
+        /// </summary>
         public long? NetIncome { get; set; }      
     }
     
@@ -101,11 +116,27 @@ namespace Hamster.UseCases.Stocks.Queries.GetFundamental
         public async Task<FundamentalDto> Handle(GetFundamentalQuery request, CancellationToken cancellationToken)
         {
             var incomeStatement = await _alphaVantageAdapter.GetIncomeStatement(request.Ticker, cancellationToken);
+            var pair = incomeStatement
+                .AnnualReports
+                .OrderByDescending(x => x.FiscalDateEnding)
+                .Take(2)
+                .ToArray();
+            var revenueGrowth = GetGrowth(pair[1].TotalRevenue, pair[0].TotalRevenue);
+            var operatingIncomeGrowth = GetGrowth(pair[1].OperatingIncome, pair[0].OperatingIncome);
+            var netIncomeGrowth = GetGrowth(pair[1].NetIncome, pair[0].NetIncome);
             var dto = new FundamentalDto
             {
-                RevenueGrowth = incomeStatement.Symbol.Length
+                RevenueGrowth = revenueGrowth,
+                OperatingIncomeGrowth = operatingIncomeGrowth,
+                NetIncomeGrowth = netIncomeGrowth
             }; 
             return dto;
+        }
+
+        private static int? GetGrowth(long? first, long? last)
+        {
+            if (first == null || last == null) return null;
+            return (int)(100 - first.Value * 100 / last.Value);
         }
     }
 }

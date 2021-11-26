@@ -25,15 +25,15 @@ namespace Hamster.Controllers.IntegrationTests.StockController
             // Assert
             Assert.NotNull(dto);
             Assert.NotNull(dto.RevenueGrowth);
-            Assert.NotNull(dto.OperatingProfitGrowth);
-            Assert.NotNull(dto.NetProfitGrowth);
-            Assert.NotNull(dto.GrossMargin);
+            Assert.NotNull(dto.OperatingIncomeGrowth);
+            Assert.NotNull(dto.NetIncomeGrowth);
+            /*Assert.NotNull(dto.GrossMargin);
             Assert.NotNull(dto.OperatingMargin);
             Assert.NotNull(dto.NetProfitMargin);
             Assert.NotNull(dto.Roe);
             Assert.NotNull(dto.Pe);
             Assert.NotNull(dto.Ps);
-            Assert.NotNull(dto.EvEbitda);
+            Assert.NotNull(dto.EvEbitda);*/
         }
 
         [Fact]
