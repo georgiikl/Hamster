@@ -9,7 +9,7 @@ namespace Hamster.UseCases
     {
         protected override void Load(ContainerBuilder builder)
         {
-            RegisterType(builder, typeof(RevenueCalculator));;
+            RegisterType(builder, typeof(AlphaVantageAdapter));;
         }
 
         private static void RegisterType(ContainerBuilder builder, Type type)
