@@ -23,9 +23,10 @@ namespace Hamster.UseCases.Stocks.Queries.GetFundamental
         {
             
         }
-        public Task<FundamentalDto> Handle(GetFundamentalQuery request, CancellationToken cancellationToken)
+        public async Task<FundamentalDto> Handle(GetFundamentalQuery request, CancellationToken cancellationToken)
         {
-            return Task.FromResult(new FundamentalDto{RevenueGrowth = request.Ticker.Length});
+            await Task.Delay(1_000, cancellationToken);
+            return new FundamentalDto{RevenueGrowth = request.Ticker.Length};
         }
     }
 }

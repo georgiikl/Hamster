@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,16 +23,17 @@ namespace Hamster.Controllers
         {
             _mediator = mediator;
         }
-        
+
         /// <summary>
         /// Получить базовый набор фундаментальных показателей акции
         /// </summary>
         /// <param name="ticker">Тикер акции на бирже</param>
-        /// <returns>ОСновные фундаментальные показатели акции</returns>
+        /// <param name="cancellationToken">Cancelation token</param>
+        /// <returns>Основные фундаментальные показатели акции</returns>
         [HttpGet("{ticker}")]
-        public Task<FundamentalDto> Fundamental(string ticker)
+        public async Task<FundamentalDto> Fundamental(string ticker, CancellationToken cancellationToken)
         {
-            return _mediator.Send(new GetFundamentalQuery{Ticker = ticker});
+            return await _mediator.Send(new GetFundamentalQuery{Ticker = ticker}, cancellationToken);
         }
     }
 }

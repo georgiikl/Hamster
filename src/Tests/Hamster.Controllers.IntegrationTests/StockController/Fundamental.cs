@@ -1,4 +1,5 @@
 using System.Reflection;
+using System.Threading;
 using Autofac;
 using MediatR.Extensions.Autofac.DependencyInjection;
 using Xunit;
@@ -14,7 +15,7 @@ namespace Hamster.Controllers.IntegrationTests.StockController
             var controller = BuildContainer().Resolve<Controllers.StockController>();
             
             // Act
-            var dto = await controller.Fundamental("FIVE");
+            var dto = await controller.Fundamental("FIVE", CancellationToken.None);
             
             // Assert
             Assert.NotNull(dto);
