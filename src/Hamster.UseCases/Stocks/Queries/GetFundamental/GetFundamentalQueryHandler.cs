@@ -121,9 +121,9 @@ namespace Hamster.UseCases.Stocks.Queries.GetFundamental
                 .OrderByDescending(x => x.FiscalDateEnding)
                 .Take(2)
                 .ToArray();
-            var revenueGrowth = GetGrowth(pair[1].TotalRevenue, pair[0].TotalRevenue);
-            var operatingIncomeGrowth = GetGrowth(pair[1].OperatingIncome, pair[0].OperatingIncome);
-            var netIncomeGrowth = GetGrowth(pair[1].NetIncome, pair[0].NetIncome);
+            var revenueGrowth = GetGrowth(pair, x => x.TotalRevenue);
+            var operatingIncomeGrowth = GetGrowth(pair, x => x.OperatingIncome);
+            var netIncomeGrowth = GetGrowth(pair, x => x.NetIncome);
             var dto = new FundamentalDto
             {
                 RevenueGrowth = revenueGrowth,
@@ -133,6 +133,19 @@ namespace Hamster.UseCases.Stocks.Queries.GetFundamental
             return dto;
         }
 
+        private static int? GetGrowth(IncomeStatementItem[] pair, Func<IncomeStatementItem, long?> selector)
+        {
+            if (pair.Length < 2) return null;
+            var first = pair[1];
+            var last = pair[0];
+            var expectedLastDate = first.FiscalDateEnding.AddYears(1);
+            if (last.FiscalDateEnding != expectedLastDate) return null;
+            var firstValue = selector(first);
+            var lastValue = selector(last);
+            var growth = GetGrowth(firstValue, lastValue);
+            return growth;
+        }
+        
         private static int? GetGrowth(long? first, long? last)
         {
             if (first == null || last is null or 0) return null;
