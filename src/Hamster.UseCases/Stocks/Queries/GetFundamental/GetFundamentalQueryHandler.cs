@@ -135,7 +135,7 @@ namespace Hamster.UseCases.Stocks.Queries.GetFundamental
 
         private static int? GetGrowth(long? first, long? last)
         {
-            if (first == null || last == null) return null;
+            if (first == null || last is null or 0) return null;
             return (int)(100 - first.Value * 100 / last.Value);
         }
     }
