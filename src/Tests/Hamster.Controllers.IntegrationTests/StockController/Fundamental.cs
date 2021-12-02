@@ -6,7 +6,7 @@ using Autofac;
 using MediatR.Extensions.Autofac.DependencyInjection;
 using Xunit;
 
-using Hamster.UseCases.Stocks.Queries.GetFundamental;
+using Hamster.Adapters.Interfaces.AlphaVantage;
 
 namespace Hamster.Controllers.IntegrationTests.StockController
 {
@@ -51,15 +51,15 @@ namespace Hamster.Controllers.IntegrationTests.StockController
             Assert.Equal(ticker, dto.Symbol);
             Assert.NotNull(dto.AnnualReports);
             Assert.NotNull(dto.QuarterlyReports);
-            void ItemInspector(IncomeStatementItem item)
+            void ItemInspector(IncomeStatementItemDto item)
             {
                 Assert.Equal("USD", item.ReportedCurrency);
                 var nextDayOfMonth = item.FiscalDateEnding.AddDays(1).Day;
                 Assert.Equal(1, nextDayOfMonth);
             }
-            var annualReportsInspectors = Enumerable.Repeat<Action<IncomeStatementItem>>(ItemInspector, 5).ToArray();
+            var annualReportsInspectors = Enumerable.Repeat<Action<IncomeStatementItemDto>>(ItemInspector, 5).ToArray();
             Assert.Collection(dto.AnnualReports, annualReportsInspectors);
-            var quarterReportsInspectors = Enumerable.Repeat<Action<IncomeStatementItem>>(ItemInspector, 20).ToArray();
+            var quarterReportsInspectors = Enumerable.Repeat<Action<IncomeStatementItemDto>>(ItemInspector, 20).ToArray();
             Assert.Collection(dto.QuarterlyReports, quarterReportsInspectors);
             
             Assert.Equal(16933000000, dto.AnnualReports[0].GrossProfit);
@@ -78,6 +78,7 @@ namespace Hamster.Controllers.IntegrationTests.StockController
             
             builder.RegisterMediatR(typeof(UseCases.DependencyInjection).GetTypeInfo().Assembly);
             builder.RegisterAssemblyModules(typeof(UseCases.DependencyInjection).Assembly);
+            builder.RegisterAssemblyModules(typeof(Adapters.Implementation.DependencyInjection).Assembly);
             var container = builder.Build();
             return container;
         }

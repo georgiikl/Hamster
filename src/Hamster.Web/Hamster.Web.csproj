@@ -11,6 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Hamster.Adapters.Implementation\Hamster.Adapters.Implementation.csproj" />
       <ProjectReference Include="..\Hamster.Controllers\Hamster.Controllers.csproj" />
     </ItemGroup>
 
