@@ -10,6 +10,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C041915E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hamster.Controllers.IntegrationTests", "src\Tests\Hamster.Controllers.IntegrationTests\Hamster.Controllers.IntegrationTests.csproj", "{9C66743A-C5FB-436E-9253-3B39C5E80E8D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hamster.Adapters.Interfaces", "src\Hamster.Adapters.Interfaces\Hamster.Adapters.Interfaces.csproj", "{0359955C-5591-49D2-A4C1-BC8ACC1D20B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hamster.Adapters.Implementation", "src\Hamster.Adapters.Implementation\Hamster.Adapters.Implementation.csproj", "{64EF7C6D-8384-4F69-BB2A-6F169D9F56F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +36,14 @@ Global
 		{9C66743A-C5FB-436E-9253-3B39C5E80E8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C66743A-C5FB-436E-9253-3B39C5E80E8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C66743A-C5FB-436E-9253-3B39C5E80E8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0359955C-5591-49D2-A4C1-BC8ACC1D20B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0359955C-5591-49D2-A4C1-BC8ACC1D20B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0359955C-5591-49D2-A4C1-BC8ACC1D20B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0359955C-5591-49D2-A4C1-BC8ACC1D20B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64EF7C6D-8384-4F69-BB2A-6F169D9F56F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64EF7C6D-8384-4F69-BB2A-6F169D9F56F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64EF7C6D-8384-4F69-BB2A-6F169D9F56F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64EF7C6D-8384-4F69-BB2A-6F169D9F56F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9C66743A-C5FB-436E-9253-3B39C5E80E8D} = {C041915E-D206-4708-A6B4-AB42ADA04BCB}
