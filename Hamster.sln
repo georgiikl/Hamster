@@ -16,6 +16,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hamster.Adapters.Implementa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hamster.Adapters.IntegrationTests", "src\Tests\Hamster.Adapters.IntegrationTests\Hamster.Adapters.IntegrationTests.csproj", "{A4F44ADB-54FB-42B0-8A60-EF63CA2C4138}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hamster.Controllers.UnitTests", "src\Tests\Hamster.Controllers.UnitTests\Hamster.Controllers.UnitTests.csproj", "{22F47D32-11D8-4BD7-B4A6-82367DAF7148}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,9 +52,14 @@ Global
 		{A4F44ADB-54FB-42B0-8A60-EF63CA2C4138}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4F44ADB-54FB-42B0-8A60-EF63CA2C4138}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4F44ADB-54FB-42B0-8A60-EF63CA2C4138}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22F47D32-11D8-4BD7-B4A6-82367DAF7148}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22F47D32-11D8-4BD7-B4A6-82367DAF7148}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22F47D32-11D8-4BD7-B4A6-82367DAF7148}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22F47D32-11D8-4BD7-B4A6-82367DAF7148}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9C66743A-C5FB-436E-9253-3B39C5E80E8D} = {C041915E-D206-4708-A6B4-AB42ADA04BCB}
 		{A4F44ADB-54FB-42B0-8A60-EF63CA2C4138} = {C041915E-D206-4708-A6B4-AB42ADA04BCB}
+		{22F47D32-11D8-4BD7-B4A6-82367DAF7148} = {C041915E-D206-4708-A6B4-AB42ADA04BCB}
 	EndGlobalSection
 EndGlobal
