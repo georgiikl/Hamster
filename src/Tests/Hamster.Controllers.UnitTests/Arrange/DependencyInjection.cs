@@ -1,5 +1,6 @@
 using System;
 using Autofac;
+using Autofac.Extras.Moq;
 
 namespace Hamster.Controllers.UnitTests.Arrange
 {
@@ -8,6 +9,8 @@ namespace Hamster.Controllers.UnitTests.Arrange
         protected override void Load(ContainerBuilder builder)
         {
             //RegisterType(builder, typeof(AlphaVantageAdapter));
+            var mockAlphaVantageAdapter = AlphaVantageAdapter.GetMock();
+            builder.RegisterMock(mockAlphaVantageAdapter);
         }
 
         private static void RegisterType(ContainerBuilder builder, Type type)
