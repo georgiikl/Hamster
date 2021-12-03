@@ -17,7 +17,7 @@ namespace Hamster.Adapters.Implementation.AlphaVantage
             HttpClient = new HttpClient();
         }
         
-        public async Task<IncomeStatementDto> GetIncomeStatement(string ticker, CancellationToken cancellationToken)
+        public async Task<IncomeStatementDto> GetIncomeStatementAsync(string ticker, CancellationToken cancellationToken)
         {
             // Welcome to Alpha Vantage! Your dedicated access key is: VXSJQII4WWM38YE7
             var requestUri = $"https://www.alphavantage.co/query?function=INCOME_STATEMENT&symbol={ticker}&apikey=VXSJQII4WWM38YE7";

@@ -5,6 +5,6 @@ namespace Hamster.Adapters.Interfaces.AlphaVantage
 {
     public interface IAlphaVantageAdapter
     {
-        Task<IncomeStatementDto> GetIncomeStatement(string ticker, CancellationToken cancellationToken);
+        Task<IncomeStatementDto> GetIncomeStatementAsync(string ticker, CancellationToken cancellationToken);
     }
 }

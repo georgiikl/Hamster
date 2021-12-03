@@ -19,7 +19,7 @@ namespace Hamster.Adapters.IntegrationTests.AlphaVantage.AlphaVantageAdapter
             
             // Act
             const string ticker = "PYPL";
-            var dto = await adapter.GetIncomeStatement(ticker, CancellationToken.None);
+            var dto = await adapter.GetIncomeStatementAsync(ticker, CancellationToken.None);
             
             // Assert
             Assert.NotNull(dto);

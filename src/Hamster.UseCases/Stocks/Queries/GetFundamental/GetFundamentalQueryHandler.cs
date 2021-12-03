@@ -18,7 +18,7 @@ namespace Hamster.UseCases.Stocks.Queries.GetFundamental
         }
         public async Task<FundamentalDto> Handle(GetFundamentalQuery request, CancellationToken cancellationToken)
         {
-            var incomeStatement = await _alphaVantageAdapter.GetIncomeStatement(request.Ticker, cancellationToken);
+            var incomeStatement = await _alphaVantageAdapter.GetIncomeStatementAsync(request.Ticker, cancellationToken);
             var pair = incomeStatement
                 .AnnualReports
                 .OrderByDescending(x => x.FiscalDateEnding)
